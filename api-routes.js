@@ -1,0 +1,25 @@
+// Filename: api-routes.js
+// Initialize express router
+let router = require('express').Router();
+// Set default API response
+router.get('/', function (req, res) {
+    res.json({
+        status: 'API Its Working',
+        message: 'Welcome to RESTHub crafted with love!'
+    });
+});
+//Import contact controller
+var rideController = require('./rideController');
+// Contact routes
+router.route('/ride')
+    .get(rideController.index)
+    .post(rideController.new);
+router.route('/rides/:ride_id')
+    .get(rideController.view)
+    .patch(rideController.update)
+    .put(rideController.update)
+    .delete(rideController.delete);
+
+// Export API routes
+module.exports = router;
+
