@@ -38,7 +38,7 @@ exports.view = function (req, res) {
         if (err)
             res.send(err);
         res.json({
-            message: 'Ride details loading..',
+            message: 'OK',
             data: ride
         });
     });
@@ -48,8 +48,8 @@ exports.update = function (req, res) {
 Ride.findById(req.params.ride_id, function (err, ride) {
         if (err)
             res.send(err);
-ride.name = req.body.name ? req.body.name : ride.name;
-        ride.location = req.body.location;
+		ride.name = req.body.name ? req.body.name : ride.name;
+        ride.location = req.body.location ?  req.body.location : ride.location;
 // save the ride and check for errors
         ride.save(function (err) {
             if (err)

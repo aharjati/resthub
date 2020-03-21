@@ -12,7 +12,7 @@ let mongoose = require('mongoose');
 let app = express();
 
 // Setup server port
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 8081;
 
 // Configure bodyparser to handle post requests
 app.use(bodyParser.urlencoded({
