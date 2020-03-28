@@ -49,7 +49,10 @@ Ride.findById(req.params.ride_id, function (err, ride) {
         if (err)
             res.send(err);
 		ride.name = req.body.name ? req.body.name : ride.name;
+		
         ride.location = req.body.location ?  req.body.location : ride.location;
+		console.log("Received PUT on id:" + req.params.ride_id);
+		console.log("  -> with Body location: "+ req.body.location);
 // save the ride and check for errors
         ride.save(function (err) {
             if (err)
