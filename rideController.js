@@ -26,7 +26,7 @@ exports.new = function (req, res) {
     ride.save(function (err) {
         // if (err)
         //     res.json(err);
-res.json({
+        res.json({
             message: 'New ride created!',
             data: ride
         });
@@ -49,7 +49,7 @@ Ride.findById(req.params.ride_id, function (err, ride) {
         if (err)
             res.send(err);
 		ride.name = req.body.name ? req.body.name : ride.name;
-		
+		ride.gen_id = ride.name;
         ride.location = req.body.location ?  req.body.location : ride.location;
 		console.log("Received PUT on id:" + req.params.ride_id);
 		console.log("  -> with Body location: "+ req.body.location);
@@ -57,10 +57,11 @@ Ride.findById(req.params.ride_id, function (err, ride) {
         ride.save(function (err) {
             if (err)
                 res.json(err);
-            res.json({
-                message: 'Ride Info updated',
-                data: ride
-            });
+            else
+                res.json({
+                    message: 'Ride Info updated',
+                    data: ride
+                });
         });
     });
 };

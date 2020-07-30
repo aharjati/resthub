@@ -5,6 +5,10 @@ var rideSchema = mongoose.Schema({
         type: String,
         required: true
     },
+	gen_id: {
+        type: String,
+        required: true
+    },
     location: {
         type: String,
         required: true
